@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { TodosContext } from '../App';
 import { todoListProps } from '../interface/model';
 import AddModal from './AddModal';
@@ -7,7 +7,19 @@ import Todo from './Todo';
 const TodoList: React.FC<todoListProps> = ({ setTodos, todo, setTodo }) => {
     const [isShowAddModal, setIsShowAddModal] = useState<boolean>(false);
     const todos = useContext(TodosContext);
-
+    const [isTodoClick, setIsTodoClick] = useState<boolean>(true);
+    const [activeTodo, setActiveTodo] = useState(todos);
+    useEffect(() => {
+        setActiveTodo(
+          todos.filter((item) => (item.isComplete !== isTodoClick ? item : null)),
+        );
+      }, [todos, isTodoClick]);
+      const todoHandler = () => {
+        setIsTodoClick(true);
+      };
+      const doneTaskHandler = () => {
+        setIsTodoClick(false);
+      };
     return (
         <div>
             {isShowAddModal && (
@@ -17,6 +29,7 @@ const TodoList: React.FC<todoListProps> = ({ setTodos, todo, setTodo }) => {
                     setTodos={setTodos}
                     showAddModal={isShowAddModal}
                     setShowAddModal={setIsShowAddModal}
+                    setIsTodoClick={setIsTodoClick}
                 />
             )}
             <div className="flex justify-between mb-24 ">
@@ -92,7 +105,7 @@ const TodoList: React.FC<todoListProps> = ({ setTodos, todo, setTodo }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {todos.map(item => {
+                        {activeTodo.map(item => {
                             <tr key={item.id}>
                                 <Todo todo={item}
                                     setTodos={setTodos}
