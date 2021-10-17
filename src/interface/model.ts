@@ -18,3 +18,9 @@ export interface TodoObj {
     showAddModal: boolean;
     setShowAddModal: React.Dispatch<React.SetStateAction<boolean>>;
   }  
+
+  export interface todoProps {
+    todo: TodoObj;
+    setTodos: React.Dispatch<React.SetStateAction<TodoObj[]>>;
+    setTodo: React.Dispatch<React.SetStateAction<TodoObj>>;
+  }
