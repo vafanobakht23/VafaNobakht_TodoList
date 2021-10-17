@@ -21,7 +21,6 @@ export interface addProps {
   setTodo: React.Dispatch<React.SetStateAction<TodoObj>>;
   showAddModal: boolean;
   setShowAddModal: React.Dispatch<React.SetStateAction<boolean>>;
-  setIsFilterClick: React.Dispatch<React.SetStateAction<boolean>>;
   setIsTodoClick: React.Dispatch<React.SetStateAction<boolean>>;
 }
 

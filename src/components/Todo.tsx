@@ -1,19 +1,44 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useContext, useState } from 'react';
 import { status } from '../constants/constants';
 import { AiFillEdit } from 'react-icons/ai';
 import { IoMdClose } from 'react-icons/io';
-import { todoProps } from '../interface/model';
+import { TodoObj, todoProps } from '../interface/model';
+import { TodosContext } from '../App';
 
 const Todo: React.FC<todoProps> = ({
     todo,
     setTodos,
     setTodo }) => {
+    const todos = useContext(TodosContext);
     const [isClickedDate, setIsClickedDate] = useState<boolean>(false);
     const [isShowEditModal, setIsShowEditModal] = useState<boolean>(false);
     const dateHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setTodo({ ...todo, [e.target.name]: e.target.value });
         setIsClickedDate(!isClickedDate);
-      };
+    };
+    const changeHandler = (todoInput: TodoObj) => {
+        const newTodos = changeTodosStatus(todoInput, todos);
+        setTodos(newTodos);
+    };
+    const changeTodosStatus = (todoInput: TodoObj, todosInput: TodoObj[]) => {
+        const newTodos = todosInput.map((item) => {
+            if (item === todoInput && item.isComplete) {
+                return {
+                    ...item,
+                    status: status.progress,
+                    isComplete: !item.isComplete,
+                };
+            } else if (item === todoInput && !item.isComplete) {
+                return {
+                    ...item,
+                    status: status.done,
+                    isComplete: !item.isComplete,
+                };
+            }
+            return item;
+        });
+        return newTodos;
+    };
     return (
         <>
             <td className="px-6 w-[20px] pt-8 sm:pt-0 pb-2 text-left relative border-t border-l sm:border-l-0 border-gray-400 sm:flex-1">
