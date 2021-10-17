@@ -5,16 +5,28 @@ export interface TodoObj {
     isComplete: boolean;
     date: string;
     time: string;
-  }
-  export interface todoListProps {
+}
+export interface todoListProps {
     setTodos: React.Dispatch<React.SetStateAction<TodoObj[]>>;
     todo: TodoObj;
     setTodo: React.Dispatch<React.SetStateAction<TodoObj>>;
-  }
-  export interface addProps {
+}
+export interface addProps {
     setTodos: React.Dispatch<React.SetStateAction<TodoObj[]>>;
     todo: TodoObj;
     setTodo: React.Dispatch<React.SetStateAction<TodoObj>>;
     showAddModal: boolean;
     setShowAddModal: React.Dispatch<React.SetStateAction<boolean>>;
-  }  
+}
+
+
+export interface editProps {
+    setTodos: React.Dispatch<React.SetStateAction<TodoObj[]>>;
+    todo: TodoObj;
+    editHandler: any;
+    setTodo: React.Dispatch<React.SetStateAction<TodoObj>>;
+    showEditModal: boolean;
+    setShowEditModal: React.Dispatch<React.SetStateAction<boolean>>;
+    editTodo: TodoObj;
+    setEditTodo: React.Dispatch<React.SetStateAction<TodoObj>>;
+}
