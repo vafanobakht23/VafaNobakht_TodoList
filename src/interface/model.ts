@@ -22,6 +22,7 @@ export interface addProps {
   showAddModal: boolean;
   setShowAddModal: React.Dispatch<React.SetStateAction<boolean>>;
   setIsTodoClick: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsFilterClick: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface editProps {
