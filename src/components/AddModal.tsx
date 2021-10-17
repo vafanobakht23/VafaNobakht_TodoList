@@ -4,7 +4,8 @@ import { object, status } from '../constants/constants';
 import { calculateDate } from '../helper/function';
 import { addProps } from '../interface/model';
 
-const AddModal: React.FC<addProps> = ({ setTodos, todo, setTodo, showAddModal, setShowAddModal, }) => {
+const AddModal: React.FC<addProps> = ({ setTodos, todo, setTodo, showAddModal, setShowAddModal,  setIsTodoClick
+}) => {
     const [isCloseModal, setIisCloseModal] = useState(false);
     const todos = useContext(TodosContext);
     const changeHandler = (
@@ -28,6 +29,7 @@ const AddModal: React.FC<addProps> = ({ setTodos, todo, setTodo, showAddModal, s
             ]);
             setTodo(object);
             setShowAddModal(!showAddModal);
+            setIsTodoClick(true);
 
         } else {
             alert('Please Enter all fields');
