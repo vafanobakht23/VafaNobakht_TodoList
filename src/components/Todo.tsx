@@ -1,25 +1,19 @@
-import React, { memo, useContext, useState } from 'react';
-import { object, status } from '../constants/constants';
+import React, { memo, useState } from 'react';
+import { status } from '../constants/constants';
 import { AiFillEdit } from 'react-icons/ai';
 import { IoMdClose } from 'react-icons/io';
 import { todoProps } from '../interface/model';
-import { TodosContext } from '../App';
 
 const Todo: React.FC<todoProps> = ({
     todo,
     setTodos,
     setTodo }) => {
-    const todos = useContext(TodosContext);
     const [isClickedDate, setIsClickedDate] = useState<boolean>(false);
     const [isShowEditModal, setIsShowEditModal] = useState<boolean>(false);
     const dateHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setTodo({ ...todo, [e.target.name]: e.target.value });
         setIsClickedDate(!isClickedDate);
-    };
-    const deleteHandler = (id: string) => {
-        setTodos(todos.filter((item) => item.id !== id));
-        setTodo(object);
-    };
+      };
     return (
         <>
             <td className="px-6 w-[20px] pt-8 sm:pt-0 pb-2 text-left relative border-t border-l sm:border-l-0 border-gray-400 sm:flex-1">
@@ -72,7 +66,7 @@ const Todo: React.FC<todoProps> = ({
                     <AiFillEdit size={'20px'} />
                 </button>
                 <button className="px-2" >
-                    <IoMdClose size={'20px'} onClick={() => deleteHandler(todo.id)}/>
+                    <IoMdClose size={'20px'} />
                 </button>
             </td>
         </>
