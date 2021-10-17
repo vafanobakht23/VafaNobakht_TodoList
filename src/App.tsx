@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { createContext, useState } from 'react';
+import TodoList from './components/TodoList';
+import { object } from './constants/constants';
+import { TodoObj } from './interface/model';
+import './styles/output.css';
+export const TodosContext = createContext<TodoObj[]>([]);
 
 function App() {
+  const [todo, setTodo] = useState<TodoObj>(object);
+  const [todos, setTodos] = useState<TodoObj[]>([]);
+
   return (
-    <div></div>
+    <TodosContext.Provider value={todos}>
+      <TodoList setTodos={setTodos} todo={todo} setTodo={setTodo} />
+    </TodosContext.Provider>
   );
 }
 
