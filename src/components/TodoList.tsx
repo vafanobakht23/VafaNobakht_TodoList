@@ -79,13 +79,13 @@ const TodoList: React.FC<TodoListProps> = ({ setTodos, todo, setTodo }) => {
       <div className="flex justify-between mb-24 ">
         <div className="space-x-1 mt-16 ">
           <button
-            className="active:text-blue-800 active hover:bg-gray-300 transition-all duration-500 focus:text-blue-800 focus:font-bold focus:bg-gray-200 rounded border border-solid text-center w-28"
+            className="active:text-blue-800 active hover:bg-gray-300 transition-all duration-100 focus:text-blue-800 focus:font-bold focus:bg-gray-200 rounded border border-solid text-center w-28"
             onClick={todoHandler}
           >
             To Do
           </button>
           <button
-            className="active:text-blue-800 active hover:bg-gray-300 transition-all duration-500 focus:text-blue-800 focus:font-bold focus:bg-gray-200 rounded border border-solid text-center w-28"
+            className="active:text-blue-800 active hover:bg-gray-300 transition-all duration-100 focus:text-blue-800 focus:font-bold focus:bg-gray-200 rounded border border-solid text-center w-28"
             onClick={doneTaskHandler}
           >
             Done Tasks
@@ -106,21 +106,21 @@ const TodoList: React.FC<TodoListProps> = ({ setTodos, todo, setTodo }) => {
         <button
           name="month"
           onClick={monthHandler}
-          className="hover:bg-gray-300 transition-all duration-500 focus:text-blue-800 focus:font-bold focus:bg-gray-200 rounded border border-solid text-center w-20"
+          className="hover:bg-gray-300 transition-all duration-100 focus:text-blue-800 focus:font-bold focus:bg-gray-200 rounded border border-solid text-center w-20"
         >
           Month
         </button>
         <button
           name="week"
           onClick={weekHandler}
-          className="hover:bg-gray-300 transition-all duration-500 focus:text-blue-800 focus:font-bold focus:bg-gray-200 rounded border border-solid text-center w-20"
+          className="hover:bg-gray-300 transition-all duration-100 focus:text-blue-800 focus:font-bold focus:bg-gray-200 rounded border border-solid text-center w-20"
         >
           Week
         </button>
         <button
           name="day"
           onClick={dayHandler}
-          className="hover:bg-gray-300 transition-all duration-500 focus:text-blue-800 focus:font-bold focus:bg-gray-200 rounded border border-solid text-center w-20"
+          className="hover:bg-gray-300 transition-all duration-100 focus:text-blue-800 focus:font-bold focus:bg-gray-200 rounded border border-solid text-center w-20"
         >
           Day
         </button>
