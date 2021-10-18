@@ -3,25 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@nrwl/eslint-plugin-nx": "^12.10.0",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^26.0.15",
-    "@types/node": "^12.0.0",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.33.0",
-    "@typescript-eslint/parser": "^4.31.2",
-    "eslint-config-airbnb-typescript": "^14.0.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-import-resolver-typescript": "^2.5.0",
-    "eslint-plugin-prettier": "^4.0.0",
+
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
     "react-scripts": "4.0.3",
-    "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
@@ -29,6 +15,7 @@
     "build": "npm run build:css && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "watch:css": "postcss src/styles/tailwind.css -o src/styles/output.css -w",
     "build:css": "postcss src/styles/tailwind.css -o src/styles/output.css -w"
   },
   "eslintConfig": {
@@ -50,10 +37,26 @@
     ]
   },
   "devDependencies": {
+    "@nrwl/eslint-plugin-nx": "^12.10.0",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.31.2",
+    "eslint-config-airbnb-typescript": "^14.0.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "autoprefixer": "^10.3.7",
     "eslint": "^7.20.0",
+    "typescript": "^4.1.2",
     "postcss": "^8.3.9",
     "postcss-cli": "^9.0.1",
+    "prettier": "^2.4.1",
     "tailwindcss": "^2.2.17"
   }
 }
