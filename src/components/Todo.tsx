@@ -1,13 +1,13 @@
 import React, { memo, useContext, useState } from 'react';
 import { AiFillEdit } from 'react-icons/ai';
 import { IoMdClose } from 'react-icons/io';
-import { TodoObj, todoProps } from '../interface/model';
+import { TodoObj, TodoProps } from '../interface/model';
 import EditModal from './EditModal';
 import { TodosContext } from '../App';
 import { calculateDate } from '../helper/function';
 import { object, status } from '../constants/constants';
 
-const Todo: React.FC<todoProps> = ({
+const Todo: React.FC<TodoProps> = ({
   todo,
   setTodos,
   setTodo,

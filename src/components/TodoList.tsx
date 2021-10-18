@@ -1,18 +1,24 @@
 import React, { memo, useContext, useEffect, useState } from 'react';
-import { todoListProps } from '../interface/model';
+import { TodoListProps } from '../interface/model';
 import Todo from './Todo';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { TodosContext } from '../App';
 import AddModal from './AddModal';
-import { filterMonth, filterToday, filterWeek } from '../helper/function';
+import {
+  filterMonth,
+  filterToday,
+  filterWeek,
+  sortByTitle,
+} from '../helper/function';
 
-const TodoList: React.FC<todoListProps> = ({ setTodos, todo, setTodo }) => {
+const TodoList: React.FC<TodoListProps> = ({ setTodos, todo, setTodo }) => {
   const [isShowAddModal, setIsShowAddModal] = useState<boolean>(false);
   const [isFilterClick, setIsFilterClick] = useState<boolean>(false);
   const [isTodoClick, setIsTodoClick] = useState<boolean>(true);
   const todos = useContext(TodosContext);
   const [activeTodo, setActiveTodo] = useState(todos);
   const [filterTodos, setFilterTodos] = useState(todos);
+  const [isIncreaseSort, setIsIncreaseSort] = useState(true);
   const todoHandler = () => {
     setIsTodoClick(true);
     setIsFilterClick(false);
@@ -22,10 +28,26 @@ const TodoList: React.FC<todoListProps> = ({ setTodos, todo, setTodo }) => {
     setIsFilterClick(false);
   };
   useEffect(() => {
-    setActiveTodo(
-      todos.filter((item) => (item.isComplete !== isTodoClick ? item : null)),
-    );
-  }, [todos, isTodoClick]);
+    if (isIncreaseSort) {
+      setActiveTodo(
+        sortByTitle(
+          todos.filter((item) =>
+            item.isComplete !== isTodoClick ? item : null,
+          ),
+          isIncreaseSort,
+        ),
+      );
+    } else {
+      setActiveTodo(
+        sortByTitle(
+          todos.filter((item) =>
+            item.isComplete !== isTodoClick ? item : null,
+          ),
+          isIncreaseSort,
+        ),
+      );
+    }
+  }, [todos, isTodoClick, isIncreaseSort]);
 
   const monthHandler = () => {
     setFilterTodos(filterMonth(todos));
@@ -57,13 +79,13 @@ const TodoList: React.FC<todoListProps> = ({ setTodos, todo, setTodo }) => {
       <div className="flex justify-between mb-24 ">
         <div className="space-x-1 mt-16 ">
           <button
-            className="hover:bg-gray-300 transition-all duration-500 focus:text-blue-800 focus:font-bold focus:bg-gray-200 rounded border border-solid text-center w-28"
+            className="active:text-blue-800 active hover:bg-gray-300 transition-all duration-500 focus:text-blue-800 focus:font-bold focus:bg-gray-200 rounded border border-solid text-center w-28"
             onClick={todoHandler}
           >
             To Do
           </button>
           <button
-            className="hover:bg-gray-300 transition-all duration-500 focus:text-blue-800 focus:font-bold focus:bg-gray-200 rounded border-1 border border-solid text-center w-28"
+            className="active:text-blue-800 active hover:bg-gray-300 transition-all duration-500 focus:text-blue-800 focus:font-bold focus:bg-gray-200 rounded border border-solid text-center w-28"
             onClick={doneTaskHandler}
           >
             Done Tasks
@@ -111,7 +133,10 @@ const TodoList: React.FC<todoListProps> = ({ setTodos, todo, setTodo }) => {
           <thead className="sm:visible sm:relative bg-gray-100">
             <tr className="text-left">
               <th className="bg-gray-100 w-[25px] sticky top-0 border-b border-gray-200 py-2 pr-36"></th>
-              <th className="bg-gray-100 min-w-[40px] w-[22%] sticky top-0 border-b border-gray-200 py-2 text-gray-400 font-bold  text-md">
+              <th
+                className="cursor-pointer bg-gray-100 min-w-[40px] w-[22%] sticky top-0 border-b border-gray-200 py-2 text-gray-400 font-bold text-md"
+                onClick={() => setIsIncreaseSort(!isIncreaseSort)}
+              >
                 Task
               </th>
               <th className="bg-gray-100 sticky  w-[22%] top-0 border-b border-gray-200 py-2 text-gray-400 font-bold text-md">

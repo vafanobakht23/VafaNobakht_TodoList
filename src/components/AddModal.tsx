@@ -1,10 +1,10 @@
 import React, { memo, useContext, useState } from 'react';
 import { TodosContext } from '../App';
 import { calculateDate } from '../helper/function';
-import { addProps } from '../interface/model';
+import { AddProps } from '../interface/model';
 import { object, status } from '../constants/constants';
 
-const AddModal: React.FC<addProps> = ({
+const AddModal: React.FC<AddProps> = ({
   setTodos,
   todo,
   setTodo,

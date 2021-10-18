@@ -1,3 +1,4 @@
+import React from 'react';
 export interface TodoObj {
   id: string;
   title: string;
@@ -7,7 +8,7 @@ export interface TodoObj {
   time: string;
 }
 
-export interface todoProps {
+export interface TodoProps {
   todo: TodoObj;
   setTodos: React.Dispatch<React.SetStateAction<TodoObj[]>>;
   setTodo: React.Dispatch<React.SetStateAction<TodoObj>>;
@@ -15,7 +16,7 @@ export interface todoProps {
   filterTodos: TodoObj[];
 }
 
-export interface addProps {
+export interface AddProps {
   setTodos: React.Dispatch<React.SetStateAction<TodoObj[]>>;
   todo: TodoObj;
   setTodo: React.Dispatch<React.SetStateAction<TodoObj>>;
@@ -25,10 +26,10 @@ export interface addProps {
   setIsFilterClick: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export interface editProps {
+export interface EditProps {
   setTodos: React.Dispatch<React.SetStateAction<TodoObj[]>>;
   todo: TodoObj;
-  editHandler: any;
+  editHandler: (id: string) => void;
   setTodo: React.Dispatch<React.SetStateAction<TodoObj>>;
   showEditModal: boolean;
   setShowEditModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -36,7 +37,7 @@ export interface editProps {
   setEditTodo: React.Dispatch<React.SetStateAction<TodoObj>>;
 }
 
-export interface todoListProps {
+export interface TodoListProps {
   setTodos: React.Dispatch<React.SetStateAction<TodoObj[]>>;
   todo: TodoObj;
   setTodo: React.Dispatch<React.SetStateAction<TodoObj>>;

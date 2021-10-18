@@ -1,7 +1,7 @@
 import React, { memo, useState } from 'react';
-import { editProps } from '../interface/model';
+import { EditProps } from '../interface/model';
 
-const EditModal: React.FC<editProps> = ({
+const EditModal: React.FC<EditProps> = ({
   todo,
   editHandler,
   showEditModal,

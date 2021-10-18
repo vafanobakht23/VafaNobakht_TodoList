@@ -76,5 +76,17 @@ const sort = (todoArray: TodoObj[]) => {
   });
   return todoArray;
 };
+const sortByTitle = (todoArray: TodoObj[], sortType: boolean): TodoObj[] => {
+  if (sortType) {
+    todoArray.sort((a, b) => {
+      return ('' + a.title).localeCompare(b.title);
+    });
+  } else {
+    todoArray.sort((a, b) => {
+      return ('' + b.title).localeCompare(a.title);
+    });
+  }
+  return todoArray;
+};
 
-export { calculateDate, filterMonth, filterToday, filterWeek };
+export { calculateDate, filterMonth, filterToday, filterWeek, sortByTitle };
