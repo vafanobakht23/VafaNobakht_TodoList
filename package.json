@@ -15,7 +15,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "watch:css": "postcss src/styles/tailwind.css -o src/styles/output.css -w",
-    "build:css": "postcss src/styles/tailwind.css -o src/styles/output.css -w",
+    "build:css": "postcss src/styles/tailwind.css -o src/styles/output.css",
     "lint": "eslint --fix --ext .tsx,.ts ./src"
   },
   "eslintConfig": {

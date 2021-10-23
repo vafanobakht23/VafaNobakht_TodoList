@@ -13,6 +13,8 @@ const Todo: React.FC<TodoProps> = ({
   setTodo,
   filterTodos,
   setFilterTodos,
+  dateFormat,
+  setDateFormat,
 }) => {
   const todos = useContext(TodosContext);
   const [isShowEditModal, setIsShowEditModal] = useState<boolean>(false);
@@ -65,6 +67,7 @@ const Todo: React.FC<TodoProps> = ({
     setTodosInput: React.Dispatch<React.SetStateAction<TodoObj[]>>,
     id: string,
   ) => {
+    setDateFormat(editTodo.date);
     const date = calculateDate(editTodo);
     setTodosInput(
       todosInput.map((item) =>
@@ -141,18 +144,22 @@ const Todo: React.FC<TodoProps> = ({
           <IoMdClose size={'20px'} />
         </button>
       </td>
-      {isShowEditModal && (
-        <EditModal
-          todo={todo}
-          setTodos={setTodos}
-          editHandler={editHandler}
-          setTodo={setTodo}
-          showEditModal={isShowEditModal}
-          setShowEditModal={setIsShowEditModal}
-          editTodo={editTodo}
-          setEditTodo={setEditTodo}
-        />
-      )}
+      <td>
+        {isShowEditModal && (
+          <EditModal
+            todo={todo}
+            setTodos={setTodos}
+            editHandler={editHandler}
+            setTodo={setTodo}
+            showEditModal={isShowEditModal}
+            setShowEditModal={setIsShowEditModal}
+            editTodo={editTodo}
+            setEditTodo={setEditTodo}
+            dateFormat={dateFormat}
+            setDateFormat={setDateFormat}
+          />
+        )}
+      </td>
     </>
   );
 };

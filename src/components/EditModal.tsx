@@ -1,5 +1,5 @@
 import React, { memo, useState } from 'react';
-import { EditProps } from '../interface/model';
+import { EditProps, TodoObj } from '../interface/model';
 
 const EditModal: React.FC<EditProps> = ({
   todo,
@@ -8,14 +8,21 @@ const EditModal: React.FC<EditProps> = ({
   setShowEditModal,
   editTodo,
   setEditTodo,
+  dateFormat,
+  setDateFormat,
 }) => {
   const [isCloseModal, setIsCloseModal] = useState(false);
+  const [prevEditTodo, setPrevEditTodo] = useState<TodoObj>(editTodo);
+  const [cloneDate, setCloneDate] = useState<string>(dateFormat);
+
   const changeHandler = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     setEditTodo({ ...editTodo, [e.target.name]: e.target.value });
+    if (e.target.name === 'date') {
+      setDateFormat(e.target.value);
+    }
   };
-
   const SubmitHandler = (event: React.FormEvent) => {
     event.preventDefault();
     editHandler(todo.id);
@@ -24,6 +31,10 @@ const EditModal: React.FC<EditProps> = ({
   const closeHandler = () => {
     setIsCloseModal(true);
     setShowEditModal(!showEditModal);
+    setEditTodo(() => prevEditTodo);
+    setPrevEditTodo(prevEditTodo);
+    setDateFormat(cloneDate);
+    setCloneDate(cloneDate);
   };
 
   return (
@@ -60,7 +71,7 @@ const EditModal: React.FC<EditProps> = ({
                 <input
                   type="date"
                   name="date"
-                  value={editTodo.date}
+                  value={dateFormat}
                   onChange={changeHandler}
                   className=" w-[92%] border border-2 border-gray-600 h-9 rounded mt-6 ml-4"
                 />

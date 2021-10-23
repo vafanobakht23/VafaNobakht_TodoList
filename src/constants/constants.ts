@@ -14,5 +14,10 @@ const status = {
   progress: 'Progress',
   pause: 'Paused',
 };
+const time = {
+  day: 'day',
+  week: 'week',
+  month: 'month',
+};
 
-export { status, object };
+export { status, object, time };

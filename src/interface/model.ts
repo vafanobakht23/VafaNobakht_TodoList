@@ -14,6 +14,8 @@ export interface TodoProps {
   setTodo: React.Dispatch<React.SetStateAction<TodoObj>>;
   setFilterTodos: React.Dispatch<React.SetStateAction<TodoObj[]>>;
   filterTodos: TodoObj[];
+  dateFormat:string;
+  setDateFormat:React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface AddProps {
@@ -24,6 +26,7 @@ export interface AddProps {
   setShowAddModal: React.Dispatch<React.SetStateAction<boolean>>;
   setIsTodoClick: React.Dispatch<React.SetStateAction<boolean>>;
   setIsFilterClick: React.Dispatch<React.SetStateAction<boolean>>;
+  setDateFormat:React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface EditProps {
@@ -35,6 +38,8 @@ export interface EditProps {
   setShowEditModal: React.Dispatch<React.SetStateAction<boolean>>;
   editTodo: TodoObj;
   setEditTodo: React.Dispatch<React.SetStateAction<TodoObj>>;
+  dateFormat:string;
+  setDateFormat:React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface TodoListProps {
