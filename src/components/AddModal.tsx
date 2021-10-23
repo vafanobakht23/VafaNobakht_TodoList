@@ -12,7 +12,6 @@ const AddModal: React.FC<AddProps> = ({
   setShowAddModal,
   setIsFilterClick,
   setIsTodoClick,
-  setDateFormat,
 }) => {
   const todos = useContext(TodosContext);
   const changeHandler = (
@@ -22,7 +21,6 @@ const AddModal: React.FC<AddProps> = ({
   };
 
   const addHandler = () => {
-    setDateFormat(todo.date);
     const date = calculateDate(todo);
     if (todo.title && todo.date && todo.time) {
       setTodos([

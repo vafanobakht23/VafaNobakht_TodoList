@@ -22,7 +22,6 @@ const TodoList: React.FC<TodoListProps> = ({ setTodos, todo, setTodo }) => {
   const [activeTodo, setActiveTodo] = useState(todos);
   const [filterTodos, setFilterTodos] = useState(todos);
   const [isIncreaseSort, setIsIncreaseSort] = useState(true);
-  const [dateFormat, setDateFormat] = useState<string>('');
   const todoHandler = () => {
     setIsTodoClick(true);
     setIsFilterClick(false);
@@ -66,7 +65,6 @@ const TodoList: React.FC<TodoListProps> = ({ setTodos, todo, setTodo }) => {
           setShowAddModal={setIsShowAddModal}
           setIsFilterClick={setIsFilterClick}
           setIsTodoClick={setIsTodoClick}
-          setDateFormat={setDateFormat}
         />
       )}
       <div className="flex justify-between mb-24 ">
@@ -127,10 +125,10 @@ const TodoList: React.FC<TodoListProps> = ({ setTodos, todo, setTodo }) => {
         </button>
       </div>
       <div
-        className="overflow-x-hidden bg-white rounded-lg shadow overflow-y-hidden relative mt-10"
-        style={{ height: '405px' }}
+        className="bg-white rounded-lg shadow overflow-y-scroll relative mt-10"
+        style={{ height: '600px' }}
       >
-        <table className="border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative ">
+        <table className="border-collapse w-full whitespace-no-wrap bg-white table-striped relative ">
           <thead className="sm:visible sm:relative bg-gray-100 ">
             <tr className="text-left">
               <th className="bg-gray-100 w-[25px] sticky top-0 border-b border-gray-200 py-2 pr-36"></th>
@@ -157,7 +155,7 @@ const TodoList: React.FC<TodoListProps> = ({ setTodos, todo, setTodo }) => {
               ? activeTodo.map((item) => (
                   <tr
                     key={item.id}
-                    className="bg-white shadow-lg sm:shadow-none sm:mb-0 cursor-pointer hover:bg-gray-100 border-l-2 border-r-2 hover:border-gray-600"
+                    className="bg-white shadow-xl sm:shadow-none sm:mb-0 cursor-pointer hover:bg-gray-100 border-l-2 border-r-2 hover:border-gray-600"
                   >
                     <Todo
                       todo={item}
@@ -165,15 +163,13 @@ const TodoList: React.FC<TodoListProps> = ({ setTodos, todo, setTodo }) => {
                       setTodo={setTodo}
                       filterTodos={filterTodos}
                       setFilterTodos={setFilterTodos}
-                      dateFormat={dateFormat}
-                      setDateFormat={setDateFormat}
                     />
                   </tr>
                 ))
               : filterTodos.map((item) => (
                   <tr
                     key={item.id}
-                    className="bg-white shadow-lg sm:shadow-none sm:mb-0 cursor-pointer hover:bg-gray-100 border-l-2 border-r-2 hover:border-gray-600"
+                    className="bg-white shadow-xl sm:shadow-none sm:mb-0 cursor-pointer hover:bg-gray-100 border-l-2 border-r-2 hover:border-gray-600"
                   >
                     <Todo
                       todo={item}
@@ -181,8 +177,6 @@ const TodoList: React.FC<TodoListProps> = ({ setTodos, todo, setTodo }) => {
                       setTodo={setTodo}
                       filterTodos={filterTodos}
                       setFilterTodos={setFilterTodos}
-                      dateFormat={dateFormat}
-                      setDateFormat={setDateFormat}
                     />
                   </tr>
                 ))}

@@ -10,6 +10,13 @@ const calculateDate = (todo: TodoObj): string => {
   return today;
 };
 
+const calcOriginalDate = (todo: TodoObj): string => {
+  const todayDate = new Date(todo.date);
+  todayDate.setMinutes(todayDate.getMinutes() - todayDate.getTimezoneOffset());
+  const newTodayDate = todayDate.toISOString().slice(0, 10);
+  return newTodayDate;
+};
+
 const dateType = (): string => {
   const date = new Date();
   const today = date.toLocaleDateString('en-GB', {
@@ -88,5 +95,11 @@ const sortByTitle = (todoArray: TodoObj[], sortType: boolean): TodoObj[] => {
   }
   return todoArray;
 };
-
-export { calculateDate, filterMonth, filterToday, filterWeek, sortByTitle };
+export {
+  calculateDate,
+  filterMonth,
+  filterToday,
+  filterWeek,
+  sortByTitle,
+  calcOriginalDate,
+};

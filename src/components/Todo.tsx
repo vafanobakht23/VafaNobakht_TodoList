@@ -13,14 +13,10 @@ const Todo: React.FC<TodoProps> = ({
   setTodo,
   filterTodos,
   setFilterTodos,
-  dateFormat,
-  setDateFormat,
 }) => {
   const todos = useContext(TodosContext);
   const [isShowEditModal, setIsShowEditModal] = useState<boolean>(false);
   const [editTodo, setEditTodo] = useState<TodoObj>(todo);
-  const [isClickedDate, setIsClickedDate] = useState<boolean>(false);
-
   const deleteHandler = (id: string) => {
     setTodos(todos.filter((item) => item.id !== id));
     setFilterTodos(filterTodos.filter((item) => item.id !== id));
@@ -53,11 +49,6 @@ const Todo: React.FC<TodoProps> = ({
     return newTodos;
   };
 
-  const dateHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTodo({ ...todo, [e.target.name]: e.target.value });
-    setIsClickedDate(!isClickedDate);
-  };
-
   const editHandler = (id: string) => {
     updateTodos(todos, setTodos, id);
     updateTodos(filterTodos, setFilterTodos, id);
@@ -67,7 +58,6 @@ const Todo: React.FC<TodoProps> = ({
     setTodosInput: React.Dispatch<React.SetStateAction<TodoObj[]>>,
     id: string,
   ) => {
-    setDateFormat(editTodo.date);
     const date = calculateDate(editTodo);
     setTodosInput(
       todosInput.map((item) =>
@@ -118,17 +108,7 @@ const Todo: React.FC<TodoProps> = ({
         </span>
       </td>
       <td className="pt-8 sm:pt-0 pb-2 text-left relative border-t border-l sm:border-l-0 border-gray-400 sm:flex-1">
-        {isClickedDate ? (
-          <input
-            type="date"
-            value={todo.date}
-            onChange={() => dateHandler}
-            name="date"
-            className="text-gray-700  py-3 flex items-center"
-          />
-        ) : (
-          <p className="text-gray-700  py-3 flex items-center">{todo.date}</p>
-        )}
+        <p className="text-gray-700  py-3 flex items-center">{todo.date}</p>
       </td>
       <td className=" pt-8 sm:pt-0 pb-2 text-left relative border-t border-l sm:border-l-0 border-gray-400 sm:flex-1">
         <p className="text-gray-700  py-3 flex items-center">{todo.time}</p>
@@ -155,8 +135,6 @@ const Todo: React.FC<TodoProps> = ({
             setShowEditModal={setIsShowEditModal}
             editTodo={editTodo}
             setEditTodo={setEditTodo}
-            dateFormat={dateFormat}
-            setDateFormat={setDateFormat}
           />
         )}
       </td>
